@@ -37,10 +37,13 @@ const BeerContainer = () => {
             </div>
             {randomBeer && (
                 <div>
-                    <h2>Random Beer</h2>
-                    <h3>{randomBeer.name}</h3>
+                    <h2 onClick={() => setSelectedBeer(randomBeer)}>
+                        {randomBeer.name}
+                    </h2>
                     <h4>{randomBeer.tagline}</h4>
-                    <p>{randomBeer.description}</p>
+                    {selectedBeer && selectedBeer.id === randomBeer.id && (
+                        <p>{randomBeer.description}</p>
+                    )}
                     <h4>{randomBeer.abv} %</h4>
                     <button onClick={toggleFavouriteRandomBeer}>
                         {favouriteBeers.some(favouriteBeer => favouriteBeer.id === randomBeer.id) ? "Remove from Favourites" : "Add to Favourites"}
